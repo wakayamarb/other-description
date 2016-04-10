@@ -88,9 +88,6 @@ gem install passenger --no-ri --no-rdoc -V
 ■bundlerのインストール
 $ rbenv exec gem install bundler
 $ rbenv rehash
--------------------------------------------------------------------
-
-
 
 ■RailsはGemからbundle installするので、やってみた
 $ mkdir apptest
@@ -102,7 +99,7 @@ Gemfileが出来るので、
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem "rails","~>4.0.0"
+gem "rails","~>4.0"
 --------------------------------
 "4.2.1"を追加した。
 
