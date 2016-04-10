@@ -1,0 +1,106 @@
+[wakayamarb.org]ubuntu 14.04
+
+■Ubuntu の場合の操作手順(例）
+sudo apt-get update
+
+sudo apt-get -yV upgrade
+sudo shutdown -r now
+↑↑↑
+リブートするとmountが外れるので、vagrant reloadする。
+
+■ユーザを作る
+$ sudo adduser kasai
+$ sudo gpasswd -a kasai sudo
+
+■日本語化
+$ sudo aptitude install locales
+$ sudo aptitude install language-pack-ja
+$ sudo dpkg-reconfigure locales          # ja_JP.UTF-8を選ぶ
+$ sudo dpkg-reconfigure tzdata #Asia Tokyoを選ぶ
+
+$ vim ~/.bashrc
+export LC_ALL=ja_JP.UTF-8
+export LANGUAGE=ja_JP.UTF-8
+export LC_MESSAGES=ja_JP.UTF-8
+export LC_IDENTIFICATION=ja_JP.UTF-8
+export LC_COLLATE=ja_JP.UTF-8
+export LANG=ja_JP.UTF-8
+export LC_MEASUREMENT=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
+export LC_TIME=ja_JP.UTF-8
+export LC_NAME=ja_JP.UTF-8
+
+■必要なライブラリのインストール
+$ sudo apt-get -y install vim git-core build-essential bison libreadline6-dev curl zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libncurses5-dev apt-file
+
+■apache2のインストール
+sudo apt-get install apache2
+
+■rvenvのインストール(rwsvtlとrootの両方にrbenvとruby 2.1.2を入れました)
+sudo apt-get -y install vim git-core build-essential bison libreadline6-dev curl zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libncurses5-dev
+
+
+cd
+git clone git://github.com/sstephenson/rbenv.git .rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+もろもろの設定
+rbenvを使うために必要な設定を ~/.bashrc に書きます。
+vim ~/.bashrc
+
+以下を書いて保存する。
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+保存したら反映。
+source ~/.bashrc
+
+■日本語化
+$sudo aptitude install language-pack-ja
+$sudo dpkg-reconfigure locales
+
+$ vim ~/.bashrc
+export LC_MESSAGES=ja_JP.UTF-8
+export LC_IDENTIFICATION=ja_JP.UTF-8
+export LC_COLLATE=ja_JP.UTF-8
+export LANG=ja_JP.UTF-8
+export LC_MEASUREMENT=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
+export LC_TIME=ja_JP.UTF-8
+export LC_NAME=ja_JP.UTF-8
+
+■rubyのインストール(rwsvtlとrootの両方にrbenvとruby 2.1.2を入れました)
+$ rbenv install 2.3.0
+$ rbenv rehash
+リハッシュする。
+
+■2.2.2のrubyをグローバルにセット
+$ rbenv global 2.3.0
+$ ruby --version
+ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
+
+■足りないと思われるライブラリのインストール
+$ sudo apt-get -y install nodejs libcurl4-openssl-dev apache2-threaded-dev libapr1-dev libaprutil1-dev
+
+■passengerのインストール
+gem install passenger --no-ri --no-rdoc -V
+
+-------------------------------------------------------------------
+
+
+■RailsはGemからbundle installするので、やってみた
+$ mkdir apptest
+$ cd apptest
+$ bundle init
+
+Gemfileが出来るので、
+--------------------------------
+# A sample Gemfile
+source "https://rubygems.org"
+
+gem "rails","4.2.1"
+--------------------------------
+"4.2.1"を追加した。
+
+$ bundle install
+$ rbenv rehash とりあえずのrehash
