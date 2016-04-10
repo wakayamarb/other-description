@@ -82,8 +82,10 @@ ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
 ■足りないと思われるライブラリのインストール
 $ sudo apt-get -y install nodejs libcurl4-openssl-dev apache2-threaded-dev libapr1-dev libaprutil1-dev
 
-■passengerのインストール
-gem install passenger --no-ri --no-rdoc -V
+---インストールしないでね。
+**■passengerのインストール
+**gem install passenger --no-ri --no-rdoc -V
+----------
 
 ■bundlerのインストール
 $ rbenv exec gem install bundler
