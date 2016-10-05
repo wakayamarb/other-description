@@ -37,9 +37,6 @@ $ sudo apt-get -y install vim git-core build-essential bison libreadline6-dev cu
 sudo apt-get install apache2
 
 ■rvenvのインストール
-sudo apt-get -y install vim git-core build-essential bison libreadline6-dev curl zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libncurses5-dev
-
-
 cd
 git clone git://github.com/sstephenson/rbenv.git .rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
